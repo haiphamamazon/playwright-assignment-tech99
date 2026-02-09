@@ -1,0 +1,38 @@
+{
+  "name": "playwright-assignment-tech99",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test:ui": "npx playwright test --grep @ui",
+    "test:headed": "npx playwright test --project='Chrome' --headed",
+    "test:chrome": "npx playwright test --project='Chrome' --ui",
+    "test:firefox": "npx playwright test --project='Firefox' --ui",
+    "test:edge": "npx playwright test --project='Edge' --ui",
+    "allure:generate": "npx allure-commandline generate ./allure-results --clean -o ./allure-report",
+    "allure:open": "npx allure-commandline open ./allure-report",
+    "allure": "npm run allure:generate && npm run allure:open",
+    "test:allure": "npm run test:headed && npm run allure",
+    "mono:report": "npx monocart show monocart-report/index.html",
+    "test:mono": "npm run test:headed && npm run mono:report",
+    "test:ci": "npx playwright test",
+    "test:ci:ui": "npx playwright test --grep @ui",
+    "allure:ci": "npx allure-commandline generate ./allure-results --clean -o ./allure-report",
+    "ci": "npm run test:ci:ui && npm run allure:ci"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@eslint/js": "^9.30.0",
+    "@playwright/test": "^1.58.2",
+    "@types/node": "^25.2.2",
+    "allure-playwright": "^3.4.5",
+    "monocart-reporter": "^2.10.0",
+    "rimraf": "^6.1.2"
+  },
+  "dependencies": {
+    "dotenv": "^17.2.4"
+  }
+}
