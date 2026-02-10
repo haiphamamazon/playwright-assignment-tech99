@@ -7,6 +7,7 @@ export class HomePageLocator extends CommonLocator {
     addToCardButton: Locator;
     cardHomePage: Locator;
     totalPrice: Locator;
+    logoutButton: Locator;
 
     constructor(page: Page) {
         super(page);
@@ -18,6 +19,7 @@ export class HomePageLocator extends CommonLocator {
         this.addToCardButton = this.page.locator("//a[normalize-space()='Add to cart']");
         this.cardHomePage = this.page.locator("//a[@id='cartur']");
         this.totalPrice = this.page.locator("//h3[@id='totalp']");
+        this.logoutButton = this.page.locator("//a[normalize-space()='Log out']");
     }
 
 }

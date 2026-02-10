@@ -21,6 +21,10 @@ export class HomePage extends BasePage {
         await expect(this.homePageLocator.welcomeUser).toHaveText(`Welcome ${username}`);
     }
 
+    async expectUserLoggedOut() {
+        await expect(this.homePageLocator.welcomeUser).not.toBeVisible();
+    }
+
     async selectProductByCategory(category: CategoryType) {
         const productName = productsByCategory[category].productName;
         await this.commonPageLocator.categoryByName(category).click();
@@ -29,6 +33,10 @@ export class HomePage extends BasePage {
 
     async clickAddToCard(): Promise<void> {
         this.clickElement(this.homePageLocator.addToCardButton);
+    }
+
+     async clickLogoutButton(): Promise<void> {
+        this.clickElement(this.homePageLocator.logoutButton);
     }
 
     async addProductToCart(): Promise<void> {

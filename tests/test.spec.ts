@@ -13,7 +13,15 @@ test.beforeEach(async ({ loginPage }) => {
 test.describe('Login functionality', {
     tag: ['@ui', '@login']
 }, () => {
-    test('@TC001 - Login with empty username and password', async ({ loginPage }) => {
+    test('@TC001 - Login with valid username and password', async ({ loginPage, homePage }) => {
+        await loginPage.clickLoginButton();
+        await loginPage.inputUsername(users.validUser.username);
+        await loginPage.inputPassword(users.validUser.password);
+        await loginPage.clickLoginToProcess();
+        await homePage.expectUserLoggedIn(users.validUser.username);
+    });
+
+    test('@TC002 - Login with empty username and password', async ({ loginPage }) => {
         await loginPage.clickLoginButton();
         await loginPage.inputUsername("");
         await loginPage.inputPassword("");
@@ -21,7 +29,7 @@ test.describe('Login functionality', {
         await loginPage.expectPopupWrongPasswordDisplay();
     });
 
-    test('@TC002 - Login with invalid username and password', async ({ page, loginPage }) => {
+    test('@TC003 - Login with invalid username and password', async ({ page, loginPage }) => {
         await loginPage.clickLoginButton();
         await loginPage.inputUsername(users.inValidUser.username);
         await loginPage.inputPassword(users.inValidUser.password);
@@ -29,13 +37,24 @@ test.describe('Login functionality', {
         await loginPage.expectPopupWrongPasswordDisplay();
     });
 
-    test('@TC003 - Login with valid username and password', async ({ loginPage, homePage }) => {
+    test('@TC004 - Login with non-existing username', async ({ page, loginPage }) => {
+        await loginPage.clickLoginButton();
+        await loginPage.inputUsername(users.nonExistingUser.username);
+        await loginPage.inputPassword(users.nonExistingUser.password);
+        await loginPage.clickLoginToProcess();
+        await loginPage.expectPopupWrongPasswordDisplay();
+    });
+
+    test('@TC005 - Login with valid username and password then Logout successful', async ({ loginPage, homePage }) => {
         await loginPage.clickLoginButton();
         await loginPage.inputUsername(users.validUser.username);
         await loginPage.inputPassword(users.validUser.password);
         await loginPage.clickLoginToProcess();
         await homePage.expectUserLoggedIn(users.validUser.username);
+        await homePage.clickLogoutButton();
+        await homePage.expectUserLoggedOut();
     });
+
 });
 
 test.describe('Place order functionality', {

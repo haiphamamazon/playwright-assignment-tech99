@@ -3,47 +3,58 @@ import { CommonLocator } from '../../locator/common-locator';
 import { BasePage } from '../common/BasePage';
 import { Page, Expect, expect } from '@playwright/test';
 
-let loginPageLocator: LoginPageLocator;
-let commonPageLocator: CommonLocator;
-
 export class LoginPage extends BasePage {
 
     readonly expect: Expect;
+    protected loginPageLocator: LoginPageLocator;
+    protected commonPageLocator: CommonLocator;
     constructor(page: Page) {
         super(page);
-        loginPageLocator = new LoginPageLocator(page);
-        commonPageLocator = new CommonLocator(page);
+        this.loginPageLocator = new LoginPageLocator(page);
+        this.commonPageLocator = new CommonLocator(page);
     }
 
     async verifyURL(): Promise<void> {
         await this.page.waitForURL('**/');
-        await expect(commonPageLocator.headerLink).toBeVisible();
+        await expect(this.commonPageLocator.headerLink).toBeVisible();
     }
 
     async clickLoginButton(): Promise<void> {
-        this.clickElement(loginPageLocator.loginButtonHomePage);
+        this.clickElement(this.loginPageLocator.loginButtonHomePage);
         this.waitUntilLoginModalDisplay();
     }
 
+    
+    async clickLogoutButton(): Promise<void> {
+        this.clickElement(this.loginPageLocator.logoutButton);
+    }
+
     async inputUsername(username: string): Promise<void> {
-        await this.fillElement(loginPageLocator.userName, username);
+        await this.fillElement(this.loginPageLocator.userName, username);
     }
 
     async inputPassword(password: string): Promise<void> {
-        await this.fillElement(loginPageLocator.passWord, password);
+        await this.fillElement(this.loginPageLocator.passWord, password);
     }
 
     async clickLoginToProcess(): Promise<void> {
-        await this.clickElement(loginPageLocator.loginButton);
+        await this.clickElement(this.loginPageLocator.loginButton);
     }
 
     async waitUntilLoginModalDisplay(): Promise<void> {
-        await expect(loginPageLocator.loginModal).toBeVisible();
+        await expect(this.loginPageLocator.loginModal).toBeVisible();
     }
 
     async expectPopupWrongPasswordDisplay() {
         this.page.once('dialog', async dialog => {
             expect(dialog.message()).toContain('Wrong password.');
+            await dialog.accept();
+        });
+    }
+
+    async expectPopupUserNotExistDisplay() {
+        this.page.once('dialog', async dialog => {
+            expect(dialog.message()).toContain('User does not exist.');
             await dialog.accept();
         });
     }

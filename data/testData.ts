@@ -7,6 +7,10 @@ export const users = {
     username: 'tech99',
     password: '123456'
   },
+  nonExistingUser: {
+    username: '!@#$%^&*()',
+    password: '123456'
+  },
 };
 
 export const productsByCategory = {

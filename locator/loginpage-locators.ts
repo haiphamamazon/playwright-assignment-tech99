@@ -10,6 +10,7 @@ export class LoginPageLocator extends CommonLocator {
     closeButton: Locator;
     loginModal: Locator;
     welcomeUser: Locator;
+    logoutButton: Locator;
 
     constructor(page: Page) {
         super(page);
@@ -24,6 +25,7 @@ export class LoginPageLocator extends CommonLocator {
         this.closeButton = this.page.locator("//button[normalize-space()='Close']");
         this.loginModal = this.page.locator("//div[@id='logInModal']/div[@class='modal-dialog']");
         this.welcomeUser = this.page.locator("//a[@id='nameofuser']");
+        this.logoutButton = this.page.locator("//a[normalize-space()='Log out']");
     }
 
 }
