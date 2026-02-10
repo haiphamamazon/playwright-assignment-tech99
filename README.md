@@ -89,19 +89,19 @@ playwright-assignment-tech99
 - npm run test:allure (for local)
   
 #### Run tests with UI mode
-npm run test:ui
+- npm run test:ui
 
 #### Run tests in headed mode
-npm run test:headed
+- npm run test:headed
 
 #### Run Chrome only
-npm run test:chrome
+- npm run test:chrome
 
 #### Run tests & generate Allure report
-npm run test:allure
+- npm run test:allure
 
 #### Run tests & generate Monocart report
-npm run test:mono
+- npm run test:mono
 
 ----------
 
@@ -124,6 +124,8 @@ npm run test:mono
 - Upload report as artifact
 ### CI config file:
 - .github/workflows/playwright.yml
+
+---------- 
 
 ## 👤 Author
 Hai Pham
