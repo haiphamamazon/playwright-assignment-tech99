@@ -14,8 +14,8 @@ export class Constants {
         PERFORM_LOADING: 2
     };
 
-    static readonly CI_WORKERS = Number(process.env.CI_WORKERS ?? 1);
-    static readonly LOCAL_WORKERS = Number(process.env.LOCAL_WORKERS ?? 8);
+    static readonly CI_WORKERS = Number(process.env.CI_WORKERS ?? 5);
+    static readonly LOCAL_WORKERS = Number(process.env.LOCAL_WORKERS ?? 5);
     static readonly BASE_URL = 'https://www.demoblaze.com/';
     static readonly MAX_RETRY_ATTEMPTS = 1;
     static readonly DATA_FOLDER = '../data';
