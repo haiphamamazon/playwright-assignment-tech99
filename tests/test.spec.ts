@@ -84,7 +84,7 @@ test.describe('Place order functionality', {
         await cartPage.clickOKButton(); // Click OK button to close purchase popup
     });
 
-    test('@TC003 - Login - Purchase product - No add to card product', async ({ loginPage, homePage, cartPage }) => {
+    test('@TC003 - Login - Purchase product - No add to cart product', async ({ loginPage, homePage, cartPage }) => {
         await loginPage.clickLoginButton();
         await loginPage.inputUsername(users.validUser.username);
         await loginPage.inputPassword(users.validUser.password);
@@ -103,7 +103,7 @@ test.describe('Place order functionality', {
         await cartPage.clickOKButton(); // Click OK button to close purchase popup
     });
 
-    test('@TC004 - No Login - Purchase product - No add to card product', async ({ homePage, cartPage }) => {
+    test('@TC004 - No Login - Purchase product - No add to cart product', async ({ homePage, cartPage }) => {
         await homePage.clickCardHomePage();
         await cartPage.clickPlaceOrder();
         await cartPage.inputName(customers.information.name);
@@ -117,7 +117,7 @@ test.describe('Place order functionality', {
         await cartPage.clickOKButton(); // Click OK button to close purchase popup
     });
 
-    test('@TC005 - Login - Purchase product - Add to card - Empty Customer Information', async ({ loginPage, homePage, cartPage }) => {
+    test('@TC005 - Login - Purchase product - Add to cart - Empty Customer Information', async ({ loginPage, homePage, cartPage }) => {
         const product = "Monitors"; // It must be Phones/Laptops/Monitos ( type of categories )
         await loginPage.clickLoginButton();
         await loginPage.inputUsername(users.validUser.username);
@@ -139,7 +139,7 @@ test.describe('Place order functionality', {
         await cartPage.expectPopupNameAndCardDisplay();
     });
 
-    test('@TC006 - No Login - Purchase product - Add to card - Empty Customer Information', async ({ homePage, cartPage }) => {
+    test('@TC006 - No Login - Purchase product - Add to cart - Empty Customer Information', async ({ homePage, cartPage }) => {
         const product = "Phones"; // It must be Phones/Laptops/Monitos ( type of categories )
         await homePage.selectProductByCategory(product);
         await homePage.addProductToCart();
@@ -157,7 +157,7 @@ test.describe('Place order functionality', {
         await cartPage.expectPopupNameAndCardDisplay();
     });
 
-    test('@TC007 - Login - Purchase product - No add to card product - Empty customer information', async ({ loginPage, homePage, cartPage }) => {
+    test('@TC007 - Login - Purchase product - No add to cart product - Empty customer information', async ({ loginPage, homePage, cartPage }) => {
         await loginPage.clickLoginButton();
         await loginPage.inputUsername(users.validUser.username);
         await loginPage.inputPassword(users.validUser.password);
@@ -175,7 +175,7 @@ test.describe('Place order functionality', {
         await cartPage.expectPopupNameAndCardDisplay();
     });
 
-    test('@TC008 - No Login - Purchase product - No add to card product - Empty customer information', async ({ homePage, cartPage }) => {
+    test('@TC008 - No Login - Purchase product - No add to cart product - Empty customer information', async ({ homePage, cartPage }) => {
         await homePage.clickCardHomePage();
         await cartPage.clickPlaceOrder();
         await cartPage.inputName("");
