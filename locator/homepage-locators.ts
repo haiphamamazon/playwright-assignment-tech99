@@ -15,11 +15,11 @@ export class HomePageLocator extends CommonLocator {
     }
 
     protected initializeLocators(): void {
-        this.welcomeUser = this.page.locator("//a[@id='nameofuser']");
-        this.addToCardButton = this.page.locator("//a[normalize-space()='Add to cart']");
-        this.cardHomePage = this.page.locator("//a[@id='cartur']");
-        this.totalPrice = this.page.locator("//h3[@id='totalp']");
-        this.logoutButton = this.page.locator("//a[normalize-space()='Log out']");
+        this.welcomeUser = this.page.locator('#nameofuser');
+        this.addToCardButton = this.page.getByText('Add to cart');
+        this.cardHomePage = this.page.locator('#cartur');
+        this.totalPrice = this.page.locator('#totalp');
+        this.logoutButton = this.page.getByText('Log out');
     }
 
 }

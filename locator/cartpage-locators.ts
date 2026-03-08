@@ -21,16 +21,16 @@ export class CartPageLocator extends CommonLocator {
     }
 
     protected initializeLocators(): void {
-        this.totalPrice = this.page.locator("//h3[@id='totalp']");
-        this.placeOrderBnt = this.page.locator("//button[normalize-space()='Place Order']");
-        this.name = this.page.locator("//input[@id='name']");
-        this.country = this.page.locator("//input[@id='country']");
-        this.city = this.page.locator("//input[@id='city']");
-        this.creditCard = this.page.locator("//input[@id='card']");
-        this.month = this.page.locator("//input[@id='month']");
-        this.year = this.page.locator("//input[@id='year']");
-        this.purchaseBtn = this.page.locator("//button[normalize-space()='Purchase']");
-        this.successfullPurchase = this.page.locator("//h2[normalize-space()='Thank you for your purchase!']"); 
-        this.okBtn = this.page.locator("//button[normalize-space()='OK']"); 
+        this.totalPrice = this.page.locator('h3#totalp');
+        this.placeOrderBnt = this.page.getByRole('button', { name: 'Place Order' });
+        this.name = this.page.locator('#name');
+        this.country = this.page.locator('#country');
+        this.city = this.page.locator('#city');
+        this.creditCard = this.page.locator('#card');
+        this.month = this.page.locator('input#month');
+        this.year = this.page.locator('input#year');
+        this.purchaseBtn = this.page.getByText('Purchase');
+        this.successfullPurchase = this.page.getByText('Thank you for your purchase!'); 
+        this.okBtn = this.page.getByText('OK'); 
     }
 }

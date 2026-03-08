@@ -18,14 +18,14 @@ export class LoginPageLocator extends CommonLocator {
     }
 
     protected initializeLocators(): void {
-        this.loginButtonHomePage = this.page.locator("//a[@id='login2']");
-        this.userName = this.page.locator("//input[@id='loginusername']");
-        this.passWord = this.page.locator("//input[@id='loginpassword']");
-        this.loginButton = this.page.locator("//button[normalize-space()='Log in']");
-        this.closeButton = this.page.locator("//button[normalize-space()='Close']");
-        this.loginModal = this.page.locator("//div[@id='logInModal']/div[@class='modal-dialog']");
-        this.welcomeUser = this.page.locator("//a[@id='nameofuser']");
-        this.logoutButton = this.page.locator("//a[normalize-space()='Log out']");
+        this.loginButtonHomePage = this.page.locator('a#login2');
+        this.userName = this.page.locator('#loginusername');
+        this.passWord = this.page.locator('#loginpassword');
+        this.loginButton = this.page.getByRole('button', { name: 'Log in' });
+        this.closeButton = this.page.getByRole('button', { name: 'Close' });
+        this.loginModal = this.page.getByRole('dialog').locator('.modal-dialog');;
+        this.welcomeUser = this.page.locator('#nameofuser');
+        this.logoutButton = this.page.locator('#logout2');
     }
 
 }
